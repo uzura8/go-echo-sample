@@ -1,0 +1,18 @@
+# OS file
+*~
+*.bak
+.DS_Store
+Thumbs.db
+
+# IDE user config
+#.vscode/
+.idea/
+*.iml
+.vs/
+.buildpath
+.project
+.settings
+*.tmproj
+desktop.ini
+nbproject/
+tags

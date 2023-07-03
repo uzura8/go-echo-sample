@@ -1,0 +1,22 @@
+# Binaries, plugins, and libraries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Test cache
+**/testdata/**
+
+# Output directories and folders
+/bin/
+/gopath/
+/vendor/
+
+# Dependency directories (Go modules)
+go.sum
+go.mod
+
+/tmp/*
