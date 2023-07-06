@@ -7,18 +7,17 @@ import (
 )
 
 type Message struct {
-    Name    string `json:"name"`
-    Email   string `json:"email"`
-    Message string `json:"message"`
+	Name    string `json:"name"`
+	Email   string `json:"email"`
+	Message string `json:"message"`
 }
 
 type Response struct {
-    Name    string `json:"name"`
-    Email   string `json:"email"`
-    Message string `json:message`
-    Status  string `json:status`
+	Name    string `json:"name"`
+	Email   string `json:"email"`
+	Message string `json:message`
+	Status  string `json:status`
 }
-
 
 func MessageRoutes(g *echo.Group) {
 	g.POST("/", sendMessage)

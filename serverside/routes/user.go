@@ -8,14 +8,13 @@ import (
 )
 
 type User struct {
-    Name  string `json:"name" validate:"required,max=10"`
-    Email string `json:"email" validate:"required,email"`
+	Name  string `json:"name" validate:"required,max=10"`
+	Email string `json:"email" validate:"required,email"`
 }
 
 type Error struct {
-    Error string `json:"error"`
+	Error string `json:"error"`
 }
-
 
 func UserRoutes(g *echo.Group) {
 	g.POST("", saveUser)
@@ -37,13 +36,13 @@ func saveUser(c echo.Context) error {
 	// Execute validate
 	if err := c.Validate(u); err != nil {
 		return c.JSON(http.StatusBadRequest, &Error{Error: err.Error()})
-    }
+	}
 	return c.JSON(http.StatusOK, u)
 }
 
 func getUserDetail(c echo.Context) error {
 	id := c.Param("id")
-    sex := c.QueryParam("sex")
+	sex := c.QueryParam("sex")
 	age := c.QueryParam("age")
 	res := fmt.Sprintf("ID:%s のユーザの性別は%s、年齢は%sです。", id, sex, age)
 	return c.String(http.StatusOK, res)
