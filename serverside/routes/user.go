@@ -8,12 +8,17 @@ import (
 )
 
 type User struct {
-    Name  string `json:"name"`
-    Email string `json:"email"`
+    Name  string `json:"name" validate:"required,max=10"`
+    Email string `json:"email" validate:"required,email"`
 }
 
+type Error struct {
+    Error string `json:"error"`
+}
+
+
 func UserRoutes(g *echo.Group) {
-	g.POST("/", saveUser)
+	g.POST("", saveUser)
 	g.GET("/:id", getUser)
 	g.GET("/:id/detail", getUserDetail)
 	g.POST("/:id/detail", saveUserDetail)
@@ -29,6 +34,10 @@ func saveUser(c echo.Context) error {
 	if err := c.Bind(u); err != nil {
 		return err
 	}
+	// Execute validate
+	if err := c.Validate(u); err != nil {
+		return c.JSON(http.StatusBadRequest, &Error{Error: err.Error()})
+    }
 	return c.JSON(http.StatusOK, u)
 }
 
@@ -40,7 +49,6 @@ func getUserDetail(c echo.Context) error {
 	return c.String(http.StatusOK, res)
 }
 
-// e.POST("/save", save)
 func saveUserDetail(c echo.Context) error {
 	id := c.Param("id")
 	sex := c.FormValue("sex")
