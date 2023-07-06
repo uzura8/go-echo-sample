@@ -2,5 +2,21 @@
   "go.formatTool": "gofmt",
   "go.lintOnSave": "workspace",
   "go.lintTool": "golangci-lint",
-  "go.lintFlags": ["--fast"]
+  "go.lintFlags": ["--fast"],
+
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "golang.go",
+  //"editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[go]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
+  },
+  "[go.mod]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
+  }
 }
