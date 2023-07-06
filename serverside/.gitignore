@@ -16,7 +16,4 @@
 /vendor/
 
 # Dependency directories (Go modules)
-go.sum
-go.mod
-
 /tmp/*
